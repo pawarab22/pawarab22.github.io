@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOGO Offer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #333;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #f26a8d;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .card.popular {
+      border: 2px solid #f26a8d;
+      background: #fff5f8;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #f26a8d;
+      color: white;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-left: 5px;
+    }
+
+    .most-popular {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #f26a8d;
+      color: white;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 0 10px 0 10px;
+    }
+
+    .price-block {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .product-options {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    select {
+      padding: 5px;
+    }
+
+    .free-delivery {
+      color: #f26a8d;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: #f26a8d;
+      color: white;
+      padding: 15px;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>YAY! It's BOGO</h1>
+
+    <div class="card">
+      <label>
+        <input type="radio" name="unit" value="1" checked>
+        <strong>1 Unit</strong>
+        <span class="badge">10% Off</span>
+      </label>
+      <div class="price-block">
+        $10.00 USD <span class="original-price">$24.00 USD</span>
+      </div>
+    </div>
+
+    <div class="card popular">
+      <div class="most-popular">MOST POPULAR</div>
+      <label>
+        <input type="radio" name="unit" value="2">
+        <strong>2 Unit</strong>
+        <span class="badge">20% Off</span>
+      </label>
+      <div class="product-options">
+        <div>
+          <label>#1</label>
+          <div>
+            <select>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+            </select>
+            <select>
+              <option>Black</option>
+              <option>Red</option>
+              <option>Blue</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label>#2</label>
+          <div>
+            <select>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+            </select>
+            <select>
+              <option>Colour</option>
+              <option>Black</option>
+              <option>Red</option>
+              <option>Blue</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="price-block">
+        $18.00 USD <span class="original-price">$24.00 USD</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <label>
+        <input type="radio" name="unit" value="3">
+        <strong>3 Unit</strong>
+        <span class="badge">30% Off</span>
+      </label>
+      <div class="price-block">
+        $24.00 USD <span class="original-price">$24.00 USD</span>
+      </div>
+    </div>
+
+    <div class="free-delivery">Free Delivery</div>
+    <div class="total">Total : <span id="totalPrice">$10.00 USD</span></div>
+    <button>Add to Cart</button>
+    <div class="footer">@ Powered by Pumper</div>
+  </div>
+
+  <script>
+    const radios = document.querySelectorAll('input[name="unit"]');
+    const totalPriceEl = document.getElementById('totalPrice');
+
+    const prices = {
+      1: '$10.00 USD',
+      2: '$18.00 USD',
+      3: '$24.00 USD'
+    };
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const selectedValue = document.querySelector('input[name="unit"]:checked').value;
+        totalPriceEl.textContent = prices[selectedValue];
+      });
+    });
+  </script>
+</body>
+</html>
